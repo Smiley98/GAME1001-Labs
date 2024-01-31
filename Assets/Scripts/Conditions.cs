@@ -29,6 +29,41 @@ public class Conditions : MonoBehaviour
         {
             // false branch
         }
+
+        // AI decision making example
+        int baseHealth = 10;
+        int healthGrowth = 25;
+        int level = 2;
+        // Typical game level up formula
+        int health = baseHealth + healthGrowth * level;
+
+        // Perhaps we encounter a magic enemy that applies at debuf!
+        health /= baseHealth;
+        Debug.Log(health);
+
+        // Snoop Dog's mana stat
+        int mana = 420;
+
+        // If health is above 50%, evaluate attack options
+        if (health > 50)
+        {
+            Debug.Log("Attack commencing. . .");
+
+            // If mana is 100%, do special attack
+            if (mana >= 100)
+            {
+                Debug.Log("Special Attack!!!");
+            }
+            else
+            {
+                Debug.Log("Basic attack (boooooo laaaame)");
+            }
+        }
+        // Heal if lower than 50% hp
+        else
+        {
+            Debug.Log("Heal");
+        }
     }
 
     [SerializeField] float x = 0.0f;
@@ -41,12 +76,14 @@ public class Conditions : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = Color.red;
         }
+
+
         if (transform.position.x > 0.0f)
         {
             GetComponent<SpriteRenderer>().color = Color.green;
         }
 
         // Uncomment to change position based on X & Y slider values
-        //transform.position = new Vector3(x, y, 0.0f);
+        transform.position = new Vector3(x, y, 0.0f);
     }
 }
