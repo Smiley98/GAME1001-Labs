@@ -21,5 +21,16 @@ public class Loops : MonoBehaviour
                 Debug.Log("Fizz");
             }
         }
+
+        int counter = 1;
+        int loopCount = Random.Range(1, 10);
+        Debug.Log("Loop count: " + loopCount);
+
+        // Loop until we've exceeded our loop count!
+        while (counter <= loopCount)
+        {
+            Debug.Log("Looping x" + counter);
+            counter++;
+        }
     }
 }
