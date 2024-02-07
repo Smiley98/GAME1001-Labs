@@ -21,5 +21,21 @@ public class Loops : MonoBehaviour
                 Debug.Log("Fizz " + "(" + number + ")");
             }
         }
+
+        // Loop that outputs 10 random numbers:
+        for (int i = 0; i < 10; i++)
+        {
+            Debug.Log("Run: " + (i + 1) + " Random number: " + Random.Range(1, 10));
+        }
+    }
+
+    void Update()
+    {
+        Color purple = new Color();
+        purple.r = 128.0f / 255.0f;
+        purple.g = 16.0f / 255.0f;
+        purple.b = 225.0f / 255.0f;
+        purple.a = 1.0f;
+        Debug.DrawLine(new Vector3(0.0f, -5.0f), new Vector3(0.0f, 5.0f), purple);
     }
 }
