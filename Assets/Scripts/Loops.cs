@@ -6,36 +6,54 @@ public class Loops : MonoBehaviour
 {
     void Start()
     {
-        // 1. Declare our counter (number)
-        // 2. Create our condition (<= 10 [less-than or equal-to 10])
-        // 3. Increment our counter (add 1 to number each time [number++])
-        for (int number = 1; number <= 10; number++)
+        // Store a single number
+        int number;
+        
+        // Store space for 10 numbers
+        int[] numbers1 = new int[10];
+
+        // Store 10 numbers directly
+        int[] numbers2 =
         {
-            Debug.Log(number);
-            if (number % 3 == 0)       // if our number is divisible by 3:
-            {
-                Debug.Log("Buzz " + "(" + number + ")");
-            }
-            else if (number % 5 == 0)   // if our number is divisible by 5:
-            {
-                Debug.Log("Fizz " + "(" + number + ")");
-            }
+            1, 2, 3, 4, 5
+        };
+
+        // We can access the value of an array element by supplying its index in []
+        Debug.Log("Before change:");
+        Debug.Log(numbers2[0]);
+        Debug.Log(numbers2[1]);
+        Debug.Log(numbers2[2]);
+
+        Debug.Log("After change:");
+        numbers2[0] = 69;
+        numbers2[1] = 420;
+        numbers2[2] = 1337;
+        Debug.Log(numbers2[0]);
+        Debug.Log(numbers2[1]);
+        Debug.Log(numbers2[2]);
+
+        Debug.Log("Counting downwards from 10");
+        for (int i = 0; i < numbers1.Length; i++)
+        {
+            numbers1[i] = 10 - i;
+            Debug.Log(numbers1[i]);
         }
 
-        // Loop that outputs 10 random numbers:
-        for (int i = 0; i < 10; i++)
+        Debug.Log("Counting upwards from 1");
+        for (int i = 0; i < numbers2.Length; i++)
         {
-            Debug.Log("Run: " + (i + 1) + " Random number: " + Random.Range(1, 10));
+            Debug.Log(numbers2[i]);
         }
-    }
 
-    void Update()
-    {
-        Color purple = new Color();
-        purple.r = 128.0f / 255.0f;
-        purple.g = 16.0f / 255.0f;
-        purple.b = 225.0f / 255.0f;
-        purple.a = 1.0f;
-        Debug.DrawLine(new Vector3(0.0f, -5.0f), new Vector3(0.0f, 5.0f), purple);
+        Debug.Log("Sum of all numbers");
+        int sum = 0;
+        for (int i = 0; i < numbers1.Length; i++)
+        {
+            sum += numbers1[i];
+        }
+        Debug.Log(sum);
+
+        Debug.Log("Average of all numbers");
+        Debug.Log(sum / (float)numbers1.Length);
     }
 }
