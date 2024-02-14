@@ -2,23 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextUpdater : MonoBehaviour
 {
     public TMP_Text greeting;
+    public Button refreshButton;
 
     // Start is called before the first frame update
     void Start()
     {
         greeting.text = "Hello world!";
+        refreshButton.onClick.AddListener(RefreshTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    void RefreshTime()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            greeting.text = Time.time.ToString();
-        }
+        greeting.text = Time.time.ToString();
     }
 }
