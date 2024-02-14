@@ -6,31 +6,44 @@ public class Loops : MonoBehaviour
 {
     void Start()
     {
-        // 1. Declare a counter variable (number = 1)
-        // 2. Set a condition (number <= 10) so we loop until the condition is false (number == 11)
-        // 3. Increment our counter (number = number + 1, or number++ for short)!
-        for (int number = 1; number <= 10; number++)
+        // Automatically initialize an array
+        // (allocate space for 10 elements even if we don't know what they will be)
+        int[] numbers1 = new int[10];
+
+        // Count down from 10 to 1
+        for (int i = 10; i > 0;  i--)
         {
-            Debug.Log(number);
-            if (number % 3 == 0)
-            {
-                Debug.Log("Buzz");
-            }
-            if (number % 5 == 0)
-            {
-                Debug.Log("Fizz");
-            }
+            int index = i - 1;
+            numbers1[index] = i;
+            Debug.Log(numbers1[index]);
         }
 
-        int counter = 1;
-        int loopCount = Random.Range(1, 10);
-        Debug.Log("Loop count: " + loopCount);
-
-        // Loop until we've exceeded our loop count!
-        while (counter <= loopCount)
+        // A simpler version of the above loop:
+        for (int i = 9; i >= 0; i--)
         {
-            Debug.Log("Looping x" + counter);
-            counter++;
+            numbers1[i] = i + 1;
+            Debug.Log(numbers1[i]);
+        }
+
+        // Manually initialize an array
+        int[] numbers2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        Debug.Log("Length of numbers2: " + numbers2.Length);
+        Debug.Log("First number: " + numbers2[0]);
+        Debug.Log("Last number: " + numbers2[numbers2.Length - 1]);
+
+        Debug.Log("Before change:");
+        for (int i = 0; i < numbers2.Length; i++)
+        {
+            Debug.Log(numbers2[i]);
+        }
+
+        Debug.Log("After change:");
+        numbers2[0] = 7;
+        numbers2[1] = 9;
+        numbers2[2] = int.MaxValue;
+        for (int i = 0; i < numbers2.Length; i++)
+        {
+            Debug.Log(numbers2[i]);
         }
     }
 }
