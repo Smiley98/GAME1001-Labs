@@ -10,6 +10,11 @@ public class TextUpdater : MonoBehaviour
     // Runs when we toggle a GameObject on
     void OnEnable()
     {
+        RefreshTime();
+    }
+
+    public void RefreshTime()
+    {
         text.text = Time.time.ToString();
     }
 }
