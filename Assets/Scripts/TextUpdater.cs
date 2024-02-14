@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class TextUpdater : MonoBehaviour
 {
     public TMP_Text greeting;
+    public TMP_InputField input;
     public Button refreshButton;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class TextUpdater : MonoBehaviour
 
     void RefreshTime()
     {
-        greeting.text = Time.time.ToString();
+        // Set greeting text equal to user input
+        greeting.text = input.text;
     }
 }
