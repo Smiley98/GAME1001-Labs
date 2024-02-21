@@ -5,30 +5,44 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     float speed = 5.0f;
+    float rotationSpeed = 100.0f;
 
     void Update()
     {
         float dt = Time.deltaTime;
-        Vector3 direction = Vector3.zero;
 
+        float rotation = 0.0f;
+        if (Input.GetKey(KeyCode.Q))
+        {
+            rotation += rotationSpeed * dt;
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            rotation -= rotationSpeed * dt;
+        }
+        transform.Rotate(new Vector3(0.0f, 0.0f, rotation));
+
+        Vector3 direction = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
-            direction += new Vector3(0.0f, 1.0f);
+            direction += transform.right;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            direction += new Vector3(0.0f, -1.0f);
+            direction -= transform.right;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            direction += new Vector3(-1.0f, 0.0f);
+            direction += transform.up;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            direction += new Vector3(1.0f, 0.0f);
+            direction -= transform.up;
         }
 
         // "normalized" changes from "square to circle"
         transform.position += direction.normalized * speed * dt;
+        Debug.DrawLine(transform.position, transform.position + transform.right * 5.0f, Color.red);
+        Debug.DrawLine(transform.position, transform.position + transform.up * 5.0f, Color.green);
     }
 }
