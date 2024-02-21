@@ -15,7 +15,31 @@ public class TextUpdater : MonoBehaviour
     public TMP_InputField inputField;
     public Button refreshButton;
 
-    void Awake()
+    // Happens first in the event lifecycle, we can add the click-listener here if we like
+    // This will run REGARDLESS of whether the object is enable/disabled!
+    //void Awake()
+    //{
+    //    Debug.Log("Awoke");
+    //}
+
+    // Happens second in the event lifecycle, OR whenever an object gets re-enabled
+    //void OnEnable()
+    //{
+    //    text.text = inputField.text;
+    //    Debug.Log("UI enabled");
+    //}
+
+    // Happens whenever an object is disabled
+    //void OnDisable()
+    //{
+    //    Debug.Log("UI disabled");
+    //}
+
+    // Happens third in the event lifecycle
+    // Only runs if script is enabled (whereas Awake will run once regardless)
+    // Re-enabling an object will cause OnEnable, Reset, and Start to get called
+    // See https://docs.unity3d.com/Manual/ExecutionOrder.html for more details!
+    void Start()
     {
         // Tell OnClickHandler() to run every time we click our refresh button
         refreshButton.onClick.AddListener(OnClickHandler);
