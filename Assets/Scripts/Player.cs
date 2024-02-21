@@ -20,6 +20,12 @@ public class Player : MonoBehaviour
         {
             rotation -= rotationSpeed * dt;
         }
+
+        // Internally when we do transform.Rotate(), Unity does vector-quaternion multiplication
+        // A quaternion stores a rotation, and a vector stores the axis of rotation
+        // Hence, if we want to rotate 20 degrees from the right vector (default cartesian plane)
+        // we multiply the two together to obtain the resultant direction!
+        //transform.right = Quaternion.Euler(0.0f, 0.0f, 20.0f) * Vector3.up;
         transform.Rotate(new Vector3(0.0f, 0.0f, rotation));
 
         Vector3 direction = Vector3.zero;
