@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,6 +16,9 @@ public class TextUpdater : MonoBehaviour
     public TMP_InputField inputField;
     public Button refreshButton;
 
+    int[] numbers = new int[10];
+    int numberCount = 0;
+
     void Awake()
     {
         // Tell OnClickHandler() to run every time we click our refresh button
@@ -25,5 +29,20 @@ public class TextUpdater : MonoBehaviour
     {
         // Assign the text in the top-right to be whatever our user inputted
         text.text = inputField.text;
+
+        // Convert text to number, then store current number in array
+        numbers[numberCount] = Int32.Parse(inputField.text);
+
+        // Increment current number count
+        numberCount++;
+
+        // Output all stored numbers to the console once we have 10 numbers
+        if (numberCount == 10)
+        {
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Debug.Log(numbers[i]);
+            }
+        }
     }
 }
