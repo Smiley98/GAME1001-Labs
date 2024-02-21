@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Move at 10 units per second
-    float speed = 10.0f;
+    float speed = 5.0f;
 
+    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.W))
         {
-            transform.position -= new Vector3(speed * Time.deltaTime, 0.0f, 0.0f);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += new Vector3(speed * Time.deltaTime, 0.0f, 0.0f);
+            transform.position += new Vector3(0.0f, 1.0f) * Time.deltaTime * speed;
         }
     }
 }
