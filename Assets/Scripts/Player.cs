@@ -25,19 +25,19 @@ public class Player : MonoBehaviour
         Vector3 direction = Vector3.zero;
         if (Input.GetKey(KeyCode.A))    // left
         {
-            direction += new Vector3(-1.0f, 0.0f);
+            direction += transform.up;
         }
         if (Input.GetKey(KeyCode.D))    // right
         {
-            direction += new Vector3(1.0f, 0.0f);
+            direction -= transform.up;
         }
         if (Input.GetKey(KeyCode.W))    // up
         {
-            direction += new Vector3(0.0f, 1.0f);
+            direction += transform.right;
         }
         if (Input.GetKey(KeyCode.S))    // down
         {
-            direction += new Vector3(0.0f, -1.0f);
+            direction -= transform.right;
         }
 
         transform.position += direction.normalized * speed * dt;
