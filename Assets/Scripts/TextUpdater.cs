@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -45,9 +46,28 @@ public class TextUpdater : MonoBehaviour
         refreshButton.onClick.AddListener(OnClickHandler);
     }
 
+    int[] numbers = new int[10];
+    int numberCount = 0;
+
     public void OnClickHandler()
     {
         // Assign the text in the top-right to be whatever our user inputted
         text.text = inputField.text;
+
+        // Convert text from string to integer, and add it to the array
+        numbers[numberCount] = Int32.Parse(text.text);
+
+        // Count up every time user adds a number
+        numberCount++;
+
+        // Check if we've reached our desired number count, then output all numbers
+        if (numberCount == 10)
+        {
+            numberCount = 0;
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Debug.Log(numbers[i]);
+            }
+        }
     }
 }
