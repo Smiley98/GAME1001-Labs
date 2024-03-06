@@ -1,22 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
-// Homework hints:
-// Make an array of 10 integers (similar to how we made int[] numbers1)
-// Make a counter integer that stores the number of elements in your array
-// Increment the counter and store the user's text every time the button is clicked
-// Once the counter reaches 10, debug log all numbers stored in the array.
 public class TextUpdater : MonoBehaviour
 {
     public TMP_Text text;
     public TMP_InputField inputField;
     public Button refreshButton;
 
-    int[] numbers = new int[10];
+    int[] numbers = new int[3];
     int numberCount = 0;
 
     void Awake()
@@ -37,12 +35,20 @@ public class TextUpdater : MonoBehaviour
         numberCount++;
 
         // Output all stored numbers to the console once we have 10 numbers
-        if (numberCount == 10)
+        if (numberCount == numbers.Length)
         {
+            // Homework:
+            // 1. Print all numbers in *reverse * order(start at index 9, end at index 0)
+            // 2. Print the sum of the numbers in the array(numbers[0] + numbers[1] + numbers[2] etc)
+            // 3. Print the largest number in the array(compare largest so far with current, update accordingly)
             for (int i = 0; i < numbers.Length; i++)
             {
                 Debug.Log(numbers[i]);
             }
         }
+
+        // Assigns number count to the remainder of number count / numbers length
+        // Practically, this causes numberCount to "wrap-around" back to 0 once its numbers.Length
+        numberCount %= numbers.Length;
     }
 }
