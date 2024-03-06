@@ -5,11 +5,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Homework hints:
-// Make an array of 10 integers (similar to how we made int[] numbers1)
-// Make a counter integer that stores the number of elements in your array
-// Increment the counter and store the user's text every time the button is clicked
-// Once the counter reaches 10, debug log all numbers stored in the array.
 public class TextUpdater : MonoBehaviour
 {
     public TMP_Text text;
