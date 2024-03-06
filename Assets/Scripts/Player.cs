@@ -1,26 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Transform target;
+    public GameObject enemyPrefab;
 
-    // How to make one object face another:
-    void Start()
+    bool PointInRec(Vector2 point, Vector2 rec, float width, float height)
     {
-        // AB = B - A
-        // I'm going FROM player TO enemy so enemy = B, player = A
-        Vector3 direction = (target.position - transform.position).normalized;
-        transform.right = direction;
+        float xMin = rec.x - width * 0.5f;
+        float xMax = rec.x + width * 0.5f;
+        float yMin = rec.y - height * 0.5f;
+        float yMax = rec.y + height * 0.5f;
+
+        if (point.x < xMin) return false;
+        if (point.x > xMax) return false;
+        if (point.y < yMin) return false;
+        if (point.y > yMax) return false;
+
+        return true;
     }
 
     float speed = 5.0f;
     float rotationSpeed = 100.0f;
 
+    float xMin = -9.0f;
+    float xMax = 9.0f;
+    float yMin = -5.0f;
+    float yMax = 5.0f;
+
+    void Spawn()
+    {
+        Vector2 point = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
+        while (PointInRec(point, Vector3.zero, 16.0f, 8.0f))
+        {
+            point = new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax));
+        }
+        Instantiate(enemyPrefab, point, Quaternion.identity);
+    }
+
+    float time = 0.0f;
+
     void Update()
     {
         float dt = Time.deltaTime;
+
+        // Spawn an enemy within the box every second
+        time += dt;
+        if (time > 1.0f)
+        {
+            time = 0.0f;
+            Spawn();
+        }
 
         float rotation = 0.0f;
         if (Input.GetKey(KeyCode.Q))
