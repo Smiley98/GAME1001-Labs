@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Transform target;
+
+    // How to make one object face another:
+    void Start()
+    {
+        // AB = B - A
+        // I'm going FROM player TO enemy so enemy = B, player = A
+        Vector3 direction = (target.position - transform.position).normalized;
+        transform.right = direction;
+    }
+
     float speed = 5.0f;
     float rotationSpeed = 100.0f;
 
