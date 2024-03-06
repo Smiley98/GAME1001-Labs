@@ -39,6 +39,10 @@ public class TextUpdater : MonoBehaviour
         // Output all stored numbers to the console once we have 10 numbers
         if (numberCount == numbers.Length)
         {
+            // Homework:
+            // 1. Print all numbers in *reverse* order (start at index 9, end at index 0)
+            // 2. Print the sum of the numbers in the array (numbers[0] + numbers[1] + numbers[2] etc)
+            // 3. Print the largest number in the array (compare largest so far with current, update accordingly)
             for (int i = 0; i < numbers.Length; i++)
             {
                 Debug.Log(numbers[i]);
