@@ -16,7 +16,7 @@ public class TextUpdater : MonoBehaviour
     public TMP_InputField inputField;
     public Button refreshButton;
 
-    int[] numbers = new int[10];
+    int[] numbers = new int[3];
     int numberCount = 0;
 
     void Awake()
@@ -37,12 +37,16 @@ public class TextUpdater : MonoBehaviour
         numberCount++;
 
         // Output all stored numbers to the console once we have 10 numbers
-        if (numberCount == 10)
+        if (numberCount == numbers.Length)
         {
             for (int i = 0; i < numbers.Length; i++)
             {
                 Debug.Log(numbers[i]);
             }
         }
+
+        // "Wrap-around" our counter --> prevents our array from going out of bounds!
+        // ie will be 0-9 for values 0-9, 10 % 10 = 0, 10 % 11 = 1, 10 % 12 = 2 etc.
+        numberCount %= numbers.Length;
     }
 }
