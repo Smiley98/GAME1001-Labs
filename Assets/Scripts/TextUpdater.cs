@@ -49,7 +49,11 @@ public class TextUpdater : MonoBehaviour
                 Debug.Log(numbers[i]);
             }
             Debug.Log("Sum: " + sum); 
-            Debug.Log("Largest: " + largest);
+            //Debug.Log("Largest: " + largest);
+
+            // Alternative solution to largest number:
+            Array.Sort(numbers);
+            Debug.Log("Largest: " + numbers[numbers.Length - 1]);
         }
 
         // "Wrap-around" our counter --> prevents our array from going out of bounds!
