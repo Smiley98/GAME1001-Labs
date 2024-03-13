@@ -38,10 +38,22 @@ public class TextUpdater : MonoBehaviour
             // 1. Print all numbers in *reverse* order (start at index 9, end at index 0)
             // 2. Print the sum of the numbers in the array (numbers[0] + numbers[1] + numbers[2] etc)
             // 3. Print the largest number in the array (compare largest so far with current, update accordingly)
-            for (int i = 0; i < numbers.Length; i++)
+            int sum = 0;
+            int largest = numbers[0];
+            for (int i = numbers.Length - 1; i >= 0; i--)
             {
+                if (numbers[i] > largest)
+                    largest = numbers[i];
+                sum += numbers[i];
                 Debug.Log(numbers[i]);
             }
+            Debug.Log("Sum: " + sum);
+            Debug.Log("Largest: " + largest);
+
+            // Sorts numbers ascending from least to greatest (alternative solution to task 3)
+            Array.Sort(numbers);
+            Debug.Log("Smallest: " + numbers[0]);
+            Debug.Log("Largest: " + numbers[numbers.Length - 1]);
         }
 
         // "Wrap-around" our counter --> prevents our array from going out of bounds!
