@@ -4,7 +4,45 @@ using UnityEngine;
 
 public class Functions : MonoBehaviour
 {
+    bool IsSorted(int[] numbers)
+    {
+        // TODO -- return whether array is sorted or not
+        return false;
+    }
+
+    int Find(int number, int[] numbers)
+    {
+        // TODO -- return the index of number in the array if found, otherwise return -1
+        return -1;
+    }
+
     void Start()
+    {
+        //Lesson();
+        Homework();
+    }
+
+    void Homework()
+    {
+        // Homework task 1:
+        int[] unsorted = { 1, 3, 2, 4, 5, 7, 6, 8, 9, 11 };
+        int[] sorted = new int[10];
+        for (int i = 0; i < 10; i++)
+            sorted[i] = i + 1;
+
+        bool isSorted1 = IsSorted(sorted);      // Should be true
+        bool isSorted2 = IsSorted(unsorted);    // Should be false
+        Debug.Log(isSorted1);
+        Debug.Log(isSorted2);
+
+        // Homework task 2:
+        int index1 = Find(1, sorted);       // Should be 0
+        int index2 = Find(420, sorted);     // Should be -1
+        Debug.Log(index1);
+        Debug.Log(index2);
+    }
+
+    void Lesson()
     {
         // We run functions by typing their name and
         // supplying their inputs within parentheis()
