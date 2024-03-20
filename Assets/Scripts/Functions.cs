@@ -15,9 +15,12 @@ public class Functions : MonoBehaviour
         Debug.Log("Number 1: " + a);
         Debug.Log("Number 2: " + b);
         Debug.Log("Sum: " + Add(a, b));
+        Debug.Log("Difference: " + Sub(a, b));
+        Debug.Log("Product: " + Mul(a, b));
+        Debug.Log("Quotient: " + Div(a, b));
 
-        // Task: write a Sub, Mul, and Div function that operate on whole numbers
-        // (Similar to Add but just different operations)
+        // Task: Create the same 4 functions but change them to use decimals instead
+        // Hint: All that needs to change are the data types in the signatures
     }
 
     void Update()
@@ -50,5 +53,20 @@ public class Functions : MonoBehaviour
     int Add(int a, int b)
     {
         return a + b;
+    }
+
+    int Sub(int a, int b)
+    {
+        return a - b;
+    }
+
+    int Mul(int a, int b)
+    {
+        return a * b;
+    }
+
+    int Div(int a, int b)
+    {
+        return a / b;
     }
 }
