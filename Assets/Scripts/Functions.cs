@@ -32,8 +32,44 @@ public class Functions : MonoBehaviour
     void Start()
     {
         //Week11();
-        Week12();
+        //Week12();
         //Homework();
+        ListExamples();
+    }
+
+    void ListExamples()
+    {
+        // Like arrays, lists are a collection of the same data type (int, float, GameObject, etc)
+        // Lists indicate said data-type within the angle-brackets <>
+        //int[] array = new int[10];
+        List<int> list = new List<int>();
+
+        // List is said to be a "dynamic array" because it can get bigger and/or smaller
+        // This is because we can add & remove elements from out list!
+        list.Add(1);
+        list.Add(2);
+        list.Add(3);
+
+        // Also like arrays, we access elements in our list based on indices via square-brackets []
+        // Similar to arrays, lists store a Count variable akin to array's Length
+        for (int i = 0; i < list.Count; i++)
+            Debug.Log(list[i]);
+
+        // We can remove based on value or based on index!
+        // Removing based on value is less efficient, but more convenient
+
+        Debug.Log("Removing *value* 2: 1, 2, 3 --> 1, 3");
+        list.Remove(2);     // Removes the value 2 (which was at index 1 aka list[1])
+        for (int i = 0; i < list.Count; i++)
+            Debug.Log(list[i]);
+
+        Debug.Log("Removing *index* 1: 1, 3 --> 1");
+        list.RemoveAt(1);   // Removes the value at index 1 which is 3
+        for (int i = 0; i < list.Count; i++)
+            Debug.Log(list[i]);
+
+        // Is our list empty?
+        Debug.Log(list.Count == 0);
     }
 
     // Passed "by-value" meaing we pass a *copy* of n
