@@ -31,8 +31,37 @@ public class Functions : MonoBehaviour
 
     void Start()
     {
-        //Lesson();
-        Homework();
+        //Week11();
+        Week12();
+        //Homework();
+    }
+
+    // Passed "by-value" meaing we pass a *copy* of n
+    void Increment(int n)
+    {
+        Debug.Log("Before inner increment: " + n);
+        ++n;
+        Debug.Log("After inner increment: " + n);
+    }
+
+    // Passed "by-reference" meaing we pass the actual variable n
+    void Increment(ref int n)
+    {
+        Debug.Log("Before inner increment: " + n);
+        ++n;
+        Debug.Log("After inner increment: " + n);
+    }
+
+    void Week12()
+    {
+        int n = 5;
+        Debug.Log("Before outer increment: " + n);
+        Increment(n);
+        Debug.Log("After outer increment: " + n);
+
+        Debug.Log("Before outer increment: " + n);
+        Increment(ref n);
+        Debug.Log("After outer increment: " + n);
     }
 
     void Homework()
@@ -55,7 +84,7 @@ public class Functions : MonoBehaviour
         Debug.Log(index2);
     }
 
-    void Lesson()
+    void Week11()
     {
         // We run functions by typing their name and
         // supplying their inputs within parentheis()
