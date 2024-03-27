@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Functions : MonoBehaviour
 {
+    // Ouputs whether numbers is sorted or not
     bool IsSorted(int[] numbers)
     {
-        // TODO -- return whether array is sorted or not
-        return false;
+        int previous = numbers[0];
+        for (int i = 1; i < numbers.Length; i++)
+        {
+            int current = numbers[i];
+            if (previous > current)
+                return false;
+            previous = current;
+        }
+        return true;
     }
 
+    // Outputs the index of number in the array if found, otherwise return -1
     int Find(int number, int[] numbers)
     {
-        // TODO -- return the index of number in the array if found, otherwise return -1
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            if (numbers[i] == number)
+                return i;
+        }
         return -1;
     }
 
@@ -47,7 +60,6 @@ public class Functions : MonoBehaviour
         // We run functions by typing their name and
         // supplying their inputs within parentheis()
         // We can store the output of a function within a variable!
-
         {
             int a = RandomInteger();
             int b = RandomInteger();
