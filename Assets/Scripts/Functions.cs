@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class Functions : MonoBehaviour
@@ -35,15 +36,29 @@ public class Functions : MonoBehaviour
         ++n3;
     }
 
+    // Outputs whether numbers is sorted ascending least to greatest
     bool IsSorted(int[] numbers)
     {
-        // TODO -- return whether numbers is sorted ascending least to greatest
-        return false;
+        // TODO -- 
+        int previous = numbers[0];
+        for (int i = 1; i < numbers.Length; i++)
+        {
+            int current = numbers[i];
+            if (previous > current)
+                return false;
+            previous = current;
+        }
+        return true;
     }
 
+    // Outputs the index of number if found, otherwise -1 if not found
     int Find(int number, int[] numbers)
     {
-        // TODO -- search the numbers and return the index of number if found
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            if (numbers[i] == number)
+                return i;
+        }
         return -1;
     }
 
@@ -51,9 +66,9 @@ public class Functions : MonoBehaviour
     // Start & Update have no outputs becase they return void which means "nothing".
     void Start()
     {
-        Week12();
         //Week11();
-        //Homework();
+        //Week12();
+        Homework();
     }
 
     void Week12()
