@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Functions : MonoBehaviour
 {
+    // "Default parameter" --> if we don't supply a number input, then we will use 0
+    int Increment(int number = 0)
+    {
+        return number + 1;
+    }
+
     bool IsSorted(int[] numbers)
     {
         // TODO -- return whether numbers is sorted ascending least to greatest
@@ -20,8 +26,8 @@ public class Functions : MonoBehaviour
     // Start & Update have no outputs becase they return void which means "nothing".
     void Start()
     {
-        //Lesson();
-        Homework();
+        Lesson();
+        //Homework();
     }
 
     void Homework()
@@ -75,6 +81,10 @@ public class Functions : MonoBehaviour
         Debug.Log("Difference: " + Sub(c, d));
         Debug.Log("Product: " + Mul(c, d));
         Debug.Log("Quotient: " + Div(c, d));
+
+        // Default parameter example
+        Debug.Log(Increment(1));
+        Debug.Log(Increment());
     }
 
     // This function has no inputs (nothing in parenthesis),
