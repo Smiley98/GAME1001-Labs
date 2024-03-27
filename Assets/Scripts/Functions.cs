@@ -68,7 +68,35 @@ public class Functions : MonoBehaviour
     {
         //Week11();
         //Week12();
-        Homework();
+        //Homework();
+        ListExamples();
+    }
+
+    // (Week 12 part 2)
+    void ListExamples()
+    {
+        // Just like an array, we define the data-type that our list stores, but within the <> ("angle-brackets")
+        //int[] array = new int[10];
+
+        // Unlike arrays, we can add to & remove from lists so we don't need to specify their size up-front!
+        List<int> list = new List<int>();
+        list.Add(1);
+        list.Add(2);
+        list.Add(3);
+
+        // Lists use "Count" instead of "Length" for the number of elements they contain
+        for (int i = 0; i < list.Count; i++)
+            Debug.Log(list[i]);
+
+        // Lists are powerful so they can removed based on value instead of index
+        list.Remove(2);
+        for (int i = 0; i < list.Count; i++)
+            Debug.Log(list[i]); // list is now { 0, 3 }
+
+        // Additionally, we can also remove based on index:
+        list.RemoveAt(0);   // list is now { 3 }
+        for (int i = 0; i < list.Count; i++)
+            Debug.Log(list[i]);
     }
 
     void Week12()
