@@ -27,14 +27,13 @@ public class Functions : MonoBehaviour
         Debug.Log("After inner increment (by reference): " + n);
     }
 
-    // "out" means the parameter must be initialized/assigned IN the function
-    // We want to increment, so we'll use ref instaed
-    //void Increment(ref int n1, ref int n2, ref int n3)
-    //{
-    //    ++n1;
-    //    ++n2;
-    //    ++n3;
-    //}
+    // We can have "multiple outputs" by passing multiple references
+    void Increment(ref int n1, ref int n2, ref int n3)
+    {
+        ++n1;
+        ++n2;
+        ++n3;
+    }
 
     bool IsSorted(int[] numbers)
     {
@@ -67,6 +66,13 @@ public class Functions : MonoBehaviour
         Debug.Log("Before outer increment (by reference): " + n);
         Increment(ref n);
         Debug.Log("After outer increment (by reference): " + n);
+
+        int m = 7;
+        int o = 8;
+        Debug.Log("Before multi-increment: " + n + " " + m + " " + o);
+        Increment(ref n, ref m, ref o);
+        //Increment(n, m, o); <--- compiler error because function signature requires all values to be passed by reference!
+        Debug.Log("After multi-increment: " + n + " " + m + " " + o);
     }
 
     void Homework()
