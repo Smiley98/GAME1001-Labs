@@ -5,10 +5,36 @@ using UnityEngine;
 public class Functions : MonoBehaviour
 {
     // "Default parameter" --> if we don't supply a number input, then we will use 0
-    int Increment(int number = 0)
+    int DefaultParameter(int number = 0)
     {
         return number + 1;
     }
+
+
+    // Passes n "by value" --> passes a copy of n
+    void Increment(int n)
+    {
+        Debug.Log("Before inner increment: " + n);
+        ++n;
+        Debug.Log("After inner increment: " + n);
+    }
+
+    // Passes n "by reference" --> passes the actual variable
+    void Increment(ref int n)
+    {
+        Debug.Log("Before inner increment (by reference): " + n);
+        ++n;
+        Debug.Log("After inner increment (by reference): " + n);
+    }
+
+    // "out" means the parameter must be initialized/assigned IN the function
+    // We want to increment, so we'll use ref instaed
+    //void Increment(ref int n1, ref int n2, ref int n3)
+    //{
+    //    ++n1;
+    //    ++n2;
+    //    ++n3;
+    //}
 
     bool IsSorted(int[] numbers)
     {
@@ -26,8 +52,21 @@ public class Functions : MonoBehaviour
     // Start & Update have no outputs becase they return void which means "nothing".
     void Start()
     {
-        Lesson();
+        Week12();
+        //Week11();
         //Homework();
+    }
+
+    void Week12()
+    {
+        int n = 5;
+        Debug.Log("Before outer increment (by value): " + n);
+        Increment(n);
+        Debug.Log("After outer increment (by value): " + n);
+
+        Debug.Log("Before outer increment (by reference): " + n);
+        Increment(ref n);
+        Debug.Log("After outer increment (by reference): " + n);
     }
 
     void Homework()
@@ -50,7 +89,7 @@ public class Functions : MonoBehaviour
         Debug.Log(index2);
     }
 
-    void Lesson()
+    void Week11()
     {
         // We run a function by writing its name followed by parenthsis.
         Debug.Log(RandomInteger());
@@ -83,8 +122,8 @@ public class Functions : MonoBehaviour
         Debug.Log("Quotient: " + Div(c, d));
 
         // Default parameter example
-        Debug.Log(Increment(1));
-        Debug.Log(Increment());
+        Debug.Log(DefaultParameter(1));
+        Debug.Log(DefaultParameter());
     }
 
     // This function has no inputs (nothing in parenthesis),
